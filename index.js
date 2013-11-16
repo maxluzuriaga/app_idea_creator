@@ -1,5 +1,5 @@
-var server = require ("./server"),
-    router = require("./router"),
-    routes = require("./routes");
+var server = require ("./lib/server"),
+    router = require("./lib/router"),
+    routes = require("./app/routes");
 
 server.start(router.route, routes.routes());

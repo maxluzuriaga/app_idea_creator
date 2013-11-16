@@ -2,7 +2,7 @@ var ejs = require("ejs"),
     fs = require('fs');
 
 function render(location, data, response, status) {
-  var file = "./views/" + location + ".html.ejs";
+  var file = "./app/views/" + location + ".html.ejs";
   fs.readFile(file, 'utf8', function(err, template) {
     if (err) {
       console.log(err);

@@ -1,4 +1,4 @@
-var helper = require("./helper");
+var helper = require("../lib/helper");
 
 function index(response, postData) {
   helper.render("index", { msg: "Hello World" }, response, 200);

@@ -1,9 +1,9 @@
 {
-  "name": "App Idea Creator",
+  "name": "App_Idea_Creator",
   "version": "0.0.1",
   "author": "Max Luzuriaga",
   "dependencies": {
-    
+    "ejs": "*"
   },
   "engines": {
     "node": "0.10.x",

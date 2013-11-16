@@ -1,7 +1,7 @@
+var helper = require("./helper");
+
 function index(response) {
-  response.writeHead(200, {"Content-Type" : "text/html"});
-  response.write("Index");
-  response.end();
+  helper.render("index", null, response, 200);
 }
 
 function submit(response, request) {

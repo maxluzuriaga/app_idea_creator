@@ -1,4 +1,4 @@
-var controller = require("./controller");
+var controller = require("../app/controller");
 
 function routes() {
 	var handle = {};

@@ -4,7 +4,9 @@
   "author": "Max Luzuriaga",
   "dependencies": {
     "connect": "*",
-    "ejs": "*"
+    "ejs": "*",
+    "pg": "*",
+    "db-migrate": "*"
   },
   "engines": {
     "node": "0.10.x",

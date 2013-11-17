@@ -1,0 +1,4 @@
+{
+	"dev": "postgres://postgres@localhost/app_idea_creator",
+	"prod": { "ENV": "DATABASE_URL" }
+}

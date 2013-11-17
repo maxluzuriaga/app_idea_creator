@@ -4,9 +4,9 @@ var type = dbm.dataType;
 exports.up = function(db, callback) {
   db.addColumn('ideas', 'date', {
     type: 'date'
-  }, callback)
+  }, callback);
 };
 
 exports.down = function(db, callback) {
-
+  db.removeColumn('ideas', 'date', callback);
 };

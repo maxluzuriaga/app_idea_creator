@@ -97,4 +97,26 @@ describe('Idea', function() {
       });
     });
   });
+
+  describe('.find()', function() {
+    var idea;
+
+    beforeEach(function(done) {
+      idea = new Idea();
+      idea.name = "Something";
+      idea.save(function() {
+        done();
+      });
+    });
+
+    it('should find an idea correctly', function(done) {
+      Idea.find(idea.id, function(i) {
+        assert.equal(i.id, idea.id);
+        assert.equal(i.name, idea.name);
+        assert.equal(i.date.getTime(), idea.date.getTime());
+        done();
+      });
+    });
+
+  });
 });

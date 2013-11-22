@@ -11,17 +11,20 @@ var Idea = function(data) {
     this.date = null;
   }
 
-  this.save = function() {
+  this.save = function(callback) {
     if (this.id == -1) {
       db.perform_query('INSERT INTO ideas(name, date) VALUES($1, current_timestamp) RETURNING id, date', [this.name], function(data) {
         this.id = data.rows[0].id;
-        this.date = data.rows[0];
-        console.log(this.date);
-      });
+        this.date = data.rows[0].date;
+
+        callback();
+      }.bind(this));
     } else {
-      db.perform_query('UPDATE ideas SET name = $1, date = $2 WHERE id = $3', [this.name, new Date(Date.now()), this.id], function(data) {
-        this.id = data.rows[0].id;
-      });
+      db.perform_query('UPDATE ideas SET name = $1, date = $2 WHERE id = $3 RETURNING date', [this.name, new Date(Date.now()), this.id], function(data) {
+        this.date = data.rows[0].date;
+
+        callback();
+      }.bind(this));
     };
   }
 }
@@ -35,6 +38,13 @@ Idea.getAll = function(handler) {
     };
 
     handler(ideas);
+  });
+}
+
+Idea.find = function(id, handler) {
+  db.perform_query('SELECT * FROM ideas WHERE id = $1', [id], function(data) {
+    var idea = new Idea(data.rows[0])
+    handler(idea);
   });
 }
 

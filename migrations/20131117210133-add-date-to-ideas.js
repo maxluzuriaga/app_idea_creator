@@ -3,7 +3,7 @@ var type = dbm.dataType;
 
 exports.up = function(db, callback) {
   db.addColumn('ideas', 'date', {
-    type: 'date'
+    type: 'timestamptz'
   }, callback);
 };
 

@@ -13,7 +13,7 @@ var Idea = function(data) {
 
   this.save = function(callback) {
     if (this.id == -1) {
-      db.perform_query('INSERT INTO ideas(name, date) VALUES($1, current_timestamp) RETURNING id, date', [this.name], function(data) {
+      db.perform_query('INSERT INTO ideas(name, date) VALUES($1, $2) RETURNING id, date', [this.name, new Date()], function(data) {
         this.id = data.rows[0].id;
         this.date = data.rows[0].date;
 

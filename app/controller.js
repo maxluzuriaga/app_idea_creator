@@ -1,14 +1,13 @@
 var helper = require("../lib/helper"),
-    db = require("../lib/db");
+    db = require("../lib/db"),
+    Idea = require("./models/idea");
 
 function index(response, postData) {
-  db.perform_queries_async([
-    "INSERT INTO ideas (name) VALUES ('test')",
-    ['SELECT COUNT(id) as count FROM ideas', function(result) {
-      var message = 'There are ' + result.rows[0].count + ' ideas in the database.';
-      helper.render("index", { msg: message }, response, 200);
-    }]
-  ]);
+  var idea = new Idea();
+  idea.name = "Should have date";
+  idea.save(function() {
+    console.log(idea);
+  });
 }
 
 function submit(response, postData) {

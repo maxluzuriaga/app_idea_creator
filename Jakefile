@@ -17,11 +17,17 @@ namespace('db', function() {
   desc('Reset the database');
   task('reset', {async: true}, function() {
     db.reset(function() {
+      console.log("Database cleared");
       complete();
+    });
+
+    jake.addListener('complete', function () {
+      process.exit();
     });
   });
 });
 
-jake.addListener('complete', function () {
-  process.exit();
+desc('Run the test suite');
+task('test', function() {
+  jake.exec(["./node_modules/.bin/mocha --reporter list"], { printStdout: true });
 });

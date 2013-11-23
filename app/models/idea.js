@@ -1,14 +1,20 @@
 var db = require ("../../lib/db.js");
 
 var Idea = function(data) {
+  this.id = -1;
+  this.name = null;
+  this.date = null;
+
   if(data) {
-    this.id = data.id;
-    this.name = data.name;
-    this.date = data.date;
-  } else {
-    this.id = -1;
-    this.name = null;
-    this.date = null;
+    if(data.id != undefined) {
+      this.id = data.id;
+    }
+    if(data.name != undefined) {
+      this.name = data.name;
+    }
+    if(data.date != undefined) {
+      this.date = data.date;
+    }
   }
 
   this.save = function(callback) {

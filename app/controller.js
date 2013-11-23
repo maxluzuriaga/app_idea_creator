@@ -1,15 +1,21 @@
 var helper = require("../lib/helper"),
     db = require("../lib/db"),
-    Idea = require("./models/idea");
+    Idea = require("./models/idea"),
+    qs = require("querystring");
 
 function index(response, postData) {
-  helper.render("index.html", { msg: "Index"}, response, 200);
+  Idea.getAll(function(ideas) {
+    helper.render("index.html", { ideas: ideas }, response, 200);
+  });
 }
 
 function submit(response, postData) {
-  console.log(postData);
-  console.log(typeof postData);
-  helper.render("submit.js", { msg: postData }, response, 200);
+  var n = qs.parse(postData).idea;
+  var idea = new Idea( { name: n } );
+
+  idea.save(function() {
+    helper.render("submit.js", { idea: idea }, response, 200);
+  });
 }
 
 exports.index = index;

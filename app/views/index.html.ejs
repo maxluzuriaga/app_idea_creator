@@ -13,7 +13,20 @@
 </head>
 <body>
 
-<h1><%= msg %></h1>
+<h1>Submit your idea!</h1>
 
+<form action="/submit" method="post">
+	<input type="text" name="idea" />
+	<input type="submit" value="Submit Idea" />
+</form>
+
+<ol>
+<% ideas.forEach(function(idea) { %>
+	<li><%= idea.date %> | <strong><%= idea.name %></strong></li>
+<% }) %>
+</ol>
+
+<script type="text/javascript" src="/javascripts/lib/jquery-2.0.3.min.js"></script>
+<script type="text/javascript" src="/javascripts/application.js"></script>
 </body>
 </html>

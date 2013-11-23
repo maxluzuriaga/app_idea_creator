@@ -21,3 +21,7 @@ namespace('db', function() {
     });
   });
 });
+
+jake.addListener('complete', function () {
+  process.exit();
+});

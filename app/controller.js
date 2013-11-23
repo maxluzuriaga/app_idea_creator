@@ -1,7 +1,6 @@
 var helper = require("../lib/helper"),
     db = require("../lib/db"),
-    Idea = require("./models/idea"),
-    qs = require("querystring");
+    Idea = require("./models/idea");
 
 function index(response, postData) {
   Idea.getAll(function(ideas) {
@@ -10,8 +9,7 @@ function index(response, postData) {
 }
 
 function submit(response, postData) {
-  var n = qs.parse(postData).idea;
-  var idea = new Idea( { name: n } );
+  var idea = new Idea( { name: postData.idea } );
 
   idea.save(function() {
     helper.render("submit.js", { idea: idea }, response, 200);

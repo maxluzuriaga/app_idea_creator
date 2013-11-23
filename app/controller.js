@@ -3,15 +3,13 @@ var helper = require("../lib/helper"),
     Idea = require("./models/idea");
 
 function index(response, postData) {
-  var idea = new Idea();
-  idea.name = "Should have date";
-  idea.save(function() {
-    console.log(idea);
-  });
+  helper.render("index.html", { msg: "Index"}, response, 200);
 }
 
 function submit(response, postData) {
-  helper.render("index", { msg: postData }, response, 200);
+  console.log(postData);
+  console.log(typeof postData);
+  helper.render("submit.js", { msg: postData }, response, 200);
 }
 
 exports.index = index;

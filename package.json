@@ -7,7 +7,8 @@
     "ejs": "*",
     "pg": "*",
     "db-migrate": "*",
-    "mocha": "*"
+    "mocha": "*",
+    "jake": "*"
   },
   "engines": {
     "node": "0.10.x",

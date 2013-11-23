@@ -6,9 +6,7 @@ process.env.DATABASE_URL = "postgres://postgres@localhost/app_idea_creator_test"
 
 describe('Idea', function() {
   before(function(done) {
-    db.perform_query('DELETE FROM ideas', function() {
-      done();
-    });
+    db.reset(done);
   });
 
   describe('#new()', function() {

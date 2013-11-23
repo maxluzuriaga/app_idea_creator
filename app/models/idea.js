@@ -32,8 +32,17 @@ var Idea = function(data) {
         callback();
       }.bind(this));
     };
-  }
-}
+  };
+
+  this.destroy = function(callback) {
+    db.perform_query('DELETE FROM ideas WHERE id = $1', [this.id], function(data) {
+      this.id = -1;
+      this.name = null;
+      this.date = null;
+      callback();
+    }.bind(this));
+  };
+};
 
 Idea.getAll = function(handler) {
   db.perform_query('SELECT * FROM ideas ORDER BY id', function(data) {
@@ -45,13 +54,26 @@ Idea.getAll = function(handler) {
 
     handler(ideas);
   });
-}
+};
 
 Idea.find = function(id, handler) {
   db.perform_query('SELECT * FROM ideas WHERE id = $1', [id], function(data) {
-    var idea = new Idea(data.rows[0])
+    var idea;
+
+    if(data.rows.length == 0) {
+      idea = null;
+    } else {
+      idea = new Idea(data.rows[0]);
+    }
     handler(idea);
   });
-}
+};
+
+Idea.count = function(handler) {
+  db.perform_query('SELECT COUNT(id) AS count FROM ideas',  function(data) {
+    var count = data.rows[0].count;
+    handler(count);
+  });
+};
 
 module.exports = Idea;

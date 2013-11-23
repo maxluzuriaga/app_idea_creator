@@ -5,6 +5,7 @@ var assert = require("assert"),
 process.env.DATABASE_URL = "postgres://postgres@localhost/app_idea_creator_test";
 
 describe('Idea', function() {
+
   before(function(done) {
     db.reset(done);
   });
@@ -35,7 +36,7 @@ describe('Idea', function() {
     var idea;
 
     describe('when new', function() {
-      beforeEach(function() {
+      before(function() {
         idea = new Idea();
         idea.name = "Testing testing testing.";
       });
@@ -56,7 +57,7 @@ describe('Idea', function() {
     });
 
     describe('when saved', function() {
-      beforeEach(function(done) {
+      before(function(done) {
         idea = new Idea();
         idea.name = "Testing testing testing.";
         idea.save(function() {
@@ -96,10 +97,30 @@ describe('Idea', function() {
     });
   });
 
+  describe('#destroy()', function() {
+    var idea;
+
+    before(function(done) {
+      idea = new Idea();
+      idea.name = "Let's test the delete functionality!";
+      idea.save(done);
+    });
+
+    it('should delete the idea', function(done) {
+      var id = idea.id;
+      idea.destroy(function() {
+        Idea.find(id, function(i) {
+          assert.equal(null, i);
+          done();
+        });
+      });
+    });
+  });
+
   describe('.find()', function() {
     var idea;
 
-    beforeEach(function(done) {
+    before(function(done) {
       idea = new Idea();
       idea.name = "Something";
       idea.save(function() {
@@ -116,5 +137,47 @@ describe('Idea', function() {
       });
     });
 
+    it('should return null when no ideas match', function(done) {
+      Idea.find(Math.pow(2,13), function(i) {
+        assert.equal(null, i);
+        done();
+      });
+    });
+
   });
+
+  describe('.count()', function() {
+    var c;
+
+    before(function(done) {
+      db.reset(function() {
+        c = Math.floor((Math.random()*10)+1);
+
+        var ideas = [];
+        for(var x=0; x<c; x++) {
+          ideas.push(x);
+        };
+
+        ideas.forEach(function(i) {
+          var idea = new Idea();
+          idea.name = "New Idea " + i;
+          idea.save(function() {
+            if (i == c-1) {
+              done();
+            }
+          });
+        });
+      });
+    });
+
+    it('should find the number of ideas correctly', function(done) {
+      Idea.count(function(count) {
+        assert.equal(count, c);
+        done();
+      });
+    });
+
+  });
+
+
 });

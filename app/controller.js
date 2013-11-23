@@ -9,6 +9,7 @@ function index(response, postData) {
 }
 
 function submit(response, postData) {
+  // TODO: only create idea with non-empty name
   var idea = new Idea( { name: postData.idea } );
 
   idea.save(function() {

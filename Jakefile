@@ -4,6 +4,7 @@ process.env.DATABASE_URL = process.env.DATABASE_URL || "postgres://postgres@loca
 namespace('db', function() {
   desc('Migrate the database');
   task('migrate', function(env) {
+    console.log(process.env.DATABASE_URL);
     env = env || "dev"
     jake.exec(["./node_modules/.bin/db-migrate up --config config/database.json --env "+env], { printStdout: true});
   });

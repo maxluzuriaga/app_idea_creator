@@ -1,5 +1,5 @@
 var db = require("./lib/db.js")
-process.env.DATABASE_URL = "postgres://postgres@localhost/app_idea_creator";
+process.env.DATABASE_URL = process.env.DATABASE_URL || "postgres://postgres@localhost/app_idea_creator";
 
 namespace('db', function() {
   desc('Migrate the database');

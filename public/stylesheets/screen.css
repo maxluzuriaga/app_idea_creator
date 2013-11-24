@@ -65,13 +65,31 @@ form {
 }
 
 input[type=text] {
+	float: left;
 	background-color: #FCFFF5;
-	width: 100%;
+	width: 84%;
 	height: 50px;
 	box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	-webkit-box-sizing:border-box;
-	border: 5px solid #3E606F;
+	border: 0;
+	border-radius: 15px 0 0 15px;
+	padding: 0 2%;
+	font-size: 16pt;
+	color: #193441;
+}
+input[type=submit] {
+	float: right;
+	width: 16%;
+	border: 0;
+	/*border: 5px solid #91AA9D;*/
+	color: #D1DBBD;
+	background: #3E606F;
+	border-radius: 0 15px 15px 0;
+	/*padding: 10px;*/
+	height: 50px;
+	font-size: 12pt;
+	font-weight: bold;
 }
 
 /* ---------------------------------------------------------------------------------------

@@ -1,11 +1,14 @@
 <% include layouts/head %>
 
-<h1>Submit your idea!</h1>
-
-<form action="/submit" method="post">
-	<input type="text" name="idea" />
-	<input type="submit" value="Submit Idea" />
-</form>
+<div id="main">
+	<h1>Have an App Idea?</h1>
+	<h2>Submit it here and I might make it!</h2>
+	
+	<form action="/submit" method="post">
+		<input type="text" name="idea" />
+		<input type="submit" value="Submit Idea" />
+	</form>
+</div>
 
 <ol>
 <% ideas.forEach(function(idea) { %>

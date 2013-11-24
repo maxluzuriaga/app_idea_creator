@@ -10,6 +10,10 @@ module.exports = {
     action: controller.submit,
     accept: ["POST"]
   },
+  "/count": {
+    action: controller.count,
+    accept: ["GET"]
+  },
   404: {
     action: function index(response) {
       helper.render("404.html", null, response, 404);

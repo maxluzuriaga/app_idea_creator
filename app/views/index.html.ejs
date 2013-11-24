@@ -8,12 +8,8 @@
 		<input type="text" name="idea" />
 		<input type="submit" value="Submit" />
 	</form>
-</div>
 
-<ol>
-<% ideas.forEach(function(idea) { %>
-	<!-- <li><%= idea.date %> | <strong><%= idea.name %></strong></li> -->
-<% }) %>
-</ol>
+	<h2 id="ideas-count"><%= count %> ideas submitted</h2>
+</div>
 
 <% include layouts/foot %>

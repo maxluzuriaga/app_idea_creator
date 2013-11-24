@@ -18,7 +18,7 @@ var Idea = function(data) {
   }
 
   this.save = function(callback) {
-    if (this.id == -1) {
+    if (!this.isSaved()) {
       db.perform_query('INSERT INTO ideas(name, date) VALUES($1, $2) RETURNING id, date', [this.name, new Date()], function(data) {
         this.id = data.rows[0].id;
         this.date = data.rows[0].date;
@@ -41,6 +41,10 @@ var Idea = function(data) {
       this.date = null;
       callback();
     }.bind(this));
+  };
+
+  this.isSaved = function() {
+    return this.id != -1;
   };
 };
 

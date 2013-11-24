@@ -97,6 +97,25 @@ describe('Idea', function() {
     });
   });
 
+  describe('#isSaved()', function() {
+    var idea;
+
+    before(function() {
+      idea = new Idea();
+      idea.name = "Testing testing testing.";
+    });
+
+    it('should return false when not saved', function() {
+      assert(!idea.isSaved());
+    });
+
+    it('should return true when saved', function() {
+      idea.save(function() {
+        assert(idea.isSaved());
+      });
+    });
+  });
+
   describe('#destroy()', function() {
     var idea;
 
@@ -176,7 +195,6 @@ describe('Idea', function() {
         done();
       });
     });
-
   });
 
 

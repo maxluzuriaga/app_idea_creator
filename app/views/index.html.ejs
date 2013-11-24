@@ -3,7 +3,7 @@
 <div id="main">
 	<h1>Have an App Idea?</h1>
 	<h2>Submit it here and I might make it!</h2>
-	
+
 	<form action="/submit" method="post">
 		<input type="text" name="idea" />
 		<input type="submit" value="Submit Idea" />
@@ -12,7 +12,7 @@
 
 <ol>
 <% ideas.forEach(function(idea) { %>
-	<li><%= idea.date %> | <strong><%= idea.name %></strong></li>
+	<!-- <li><%= idea.date %> | <strong><%= idea.name %></strong></li> -->
 <% }) %>
 </ol>
 

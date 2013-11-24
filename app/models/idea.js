@@ -39,6 +39,7 @@ var Idea = function(data) {
       this.id = -1;
       this.name = null;
       this.date = null;
+      
       callback();
     }.bind(this));
   };

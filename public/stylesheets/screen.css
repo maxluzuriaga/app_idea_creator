@@ -61,7 +61,7 @@ h2 {
 }
 
 form {
-	margin-top: 20px;
+	margin: 20px 0;
 }
 
 input[type=text] {
@@ -90,6 +90,12 @@ input[type=submit] {
 	height: 50px;
 	font-size: 12pt;
 	font-weight: bold;
+}
+
+#ideas-count {
+	color: #3E606F;
+	text-align: center;
+	font-size: 14pt;
 }
 
 /* ---------------------------------------------------------------------------------------

@@ -78,6 +78,11 @@ input[type=text] {
 	font-size: 16pt;
 	color: #193441;
 }
+
+.error input[type=text] {
+	background-color: #FF8A8A;
+}
+
 input[type=submit] {
 	float: right;
 	width: 16%;

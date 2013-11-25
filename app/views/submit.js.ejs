@@ -1,1 +1,7 @@
+<% if(error) { %>
+	$('form').addClass('error');
+<% } else { %>
+	$('form input[type=text]').val("");
+<% } %>
+
 <% include count.js.ejs %>

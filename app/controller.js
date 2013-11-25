@@ -9,14 +9,23 @@ function index(response) {
 }
 
 function submit(response, postData) {
-  // TODO: only create idea with non-empty name
-  var idea = new Idea( { name: postData.idea } );
+  var r = function(e, c) {
+    helper.render("submit.js", { error: e, count: c }, response, 200);
+  };
 
-  idea.save(function() {
-    Idea.count(function(c) {
-      helper.render("submit.js", { idea: idea, count: c }, response, 200);
+  if (/\S/.test(postData.idea)) {
+    var idea = new Idea( { name: postData.idea } );
+
+    idea.save(function() {
+      Idea.count(function(c) {
+        r(false, c);
+      });
     });
-  });
+  } else {
+    Idea.count(function(c) {
+      r(true, c);
+    });
+  }
 }
 
 function count(response) {

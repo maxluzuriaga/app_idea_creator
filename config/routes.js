@@ -1,5 +1,4 @@
-var controller = require("../app/controller"),
-    helper = require("../lib/helper");
+var controller = require("../app/controller");
 
 module.exports = {
   "/": {
@@ -12,11 +11,7 @@ module.exports = {
   },
   "/count": {
     action: controller.count,
-    accept: ["GET"]
-  },
-  404: {
-    action: function index(response) {
-      helper.render("404.html", null, response, 404);
-    }
+    accept: ["GET"],
+    ajaxOnly: true
   }
 }

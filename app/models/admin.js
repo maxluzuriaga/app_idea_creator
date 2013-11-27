@@ -1,4 +1,5 @@
-var db = require ("../../lib/db.js");
+var db = require ("../../lib/db.js"),
+    crypto = require('crypto');
 
 var Admin = function(data) {
   this.id = -1;
@@ -51,8 +52,9 @@ var Admin = function(data) {
 };
 
 Admin.hashPassword = function(password) {
-  // TODO: DO THIS
-  return "LOLHASHED";
+  var shasum = crypto.createHash('sha1');
+  shasum.update(password);
+  return shasum.digest('hex');
 }
 
 Admin.find = function(username, handler) {

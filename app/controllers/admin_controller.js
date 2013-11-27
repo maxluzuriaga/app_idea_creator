@@ -1,15 +1,16 @@
 var helper = require("../../lib/helper"),
-    db = require("../../lib/db");
+    db = require("../../lib/db"),
+    Admin = require("../models/admin");
 
-function admin() {
+function admin(response) {
 
 }
 
-function login() {
+function login(response) {
 	
 }
 
-function createSession() {
+function createSession(response, postData) {
 	
 }
 

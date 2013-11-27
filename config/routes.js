@@ -17,12 +17,14 @@ module.exports = {
   },
   "/delete_idea": {
     action: ideas_controller.destroy,
-    accept: ["GET", "POST"]
+    accept: ["GET", "POST"],
+    adminOnly: true
   },
 
   "/admin": {
     action: admin_controller.admin,
-    accept: ["GET"]
+    accept: ["GET"],
+    adminOnly: true
   },
   "/login": {
     action: admin_controller.login,
@@ -35,6 +37,7 @@ module.exports = {
   },
   "/delete_admin": {
     action: admin_controller.destroy,
-    accept: ["GET", "POST"]
+    accept: ["GET", "POST"],
+    adminOnly: true
   }
 }

@@ -20,9 +20,9 @@ var Admin = function(data) {
   }
 
   this.save = function(callback) {
-    this.hashedPassword = this.hashedPassword || Admin.hashPassword(this.password);
-
     if (!this.isSaved()) {
+      this.hashedPassword = this.hashedPassword || Admin.hashPassword(this.password);
+      
       db.perform_query('INSERT INTO admins(username, passsword) VALUES($1, $2) RETURNING id', [this.username, this.hashedPassword], function(data) {
         this.id = data.rows[0].id;
 
@@ -56,6 +56,18 @@ Admin.hashPassword = function(password) {
   shasum.update(password);
   return shasum.digest('hex');
 }
+
+Admin.getAll = function(handler) {
+  db.perform_query('SELECT * FROM admins ORDER BY id', function(data) {
+    var admins = [];
+
+    for (var n=0; n<data.rows.length; n++) {
+      admins.push(new Admin(data.rows[n]));
+    };
+
+    handler(admins);
+  });
+};
 
 Admin.find = function(username, handler) {
   db.perform_query('SELECT * FROM admins WHERE username = $1', [username], function(data) {

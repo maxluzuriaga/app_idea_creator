@@ -9,7 +9,7 @@ $(function() {
 		});
 	}, 3000);
 
-	$("form").submit(function(e) {
+	$("#ideaform").submit(function(e) {
 		var formData = $(this).serializeArray(),
 			formURL = $(this).attr("action"),
 			method = $(this).attr("method").toUpperCase();
@@ -31,5 +31,16 @@ $(function() {
 		});
 
 		e.preventDefault();
+	});
+
+	$(".delete").click(function() {
+		$.ajax({
+			type: "POST",
+			url: $(this).attr("href"),
+			error: function(xhr, textStatus, error) {
+				console.log(error);
+			}
+		});
+		return false;
 	});
 });

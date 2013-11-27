@@ -15,6 +15,10 @@ module.exports = {
     accept: ["GET"],
     ajaxOnly: true
   },
+  "/delete_idea": {
+    action: ideas_controller.destroy,
+    accept: ["GET", "POST"]
+  },
 
   "/admin": {
     action: admin_controller.admin,
@@ -28,5 +32,9 @@ module.exports = {
     action: admin_controller.createSession,
     accept: ["POST"],
     secure: true
+  },
+  "/delete_admin": {
+    action: admin_controller.destroy,
+    accept: ["GET", "POST"]
   }
 }

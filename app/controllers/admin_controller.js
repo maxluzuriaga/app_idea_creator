@@ -41,6 +41,11 @@ function createSession(response, request, params, postData) {
   });
 }
 
+function destroy(response, request, params, postData) {
+
+}
+
 exports.admin = admin;
 exports.login = login;
 exports.createSession = createSession;
+exports.destroy = destroy;

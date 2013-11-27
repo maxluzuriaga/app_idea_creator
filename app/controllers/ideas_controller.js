@@ -34,6 +34,26 @@ function count(response, request, params, postData) {
   });
 }
 
+function destroy(response, request, params, postData) {
+  helper.isSignedIn(request, function(signedIn) {
+    if (signedIn) {
+      Idea.find(parseInt(params.id), function(idea) {
+        if (idea) {
+          var id = idea.id;
+          idea.destroy(function() {
+            helper.render("ideas/destroy.js", { id: id }, response, 200);
+          });
+        } else {
+          helper.render("ideas/destroy.js", { id: null }, response, 200);
+        }
+      });
+    } else {
+      helper.redirectTo("/login");
+    }
+  });
+}
+
 exports.index = index;
 exports.submit = submit;
 exports.count = count;
+exports.destroy = destroy;

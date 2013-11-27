@@ -5,7 +5,7 @@ var helper = require("../../lib/helper"),
 function admin(response, request, postData){
   helper.isSignedIn(request, function(signedIn) {
     if (signedIn) {
-      // render shit
+      helper.render("admin/admin.html", null, response, 200);
     } else {
       helper.redirectTo("/login", request, response);
     }
@@ -17,7 +17,7 @@ function login(response, request, postData) {
     if (signedIn) {
       helper.redirectTo("/admin", request, response);
     } else {
-      // render sign in form
+      helper.render("admin/login.html", null, response, 200);
     }
   });
 }

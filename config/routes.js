@@ -26,6 +26,7 @@ module.exports = {
   },
   "/create_session": {
     action: admin_controller.createSession,
-    accept: ["POST"]
+    accept: ["POST"],
+    secure: true
   }
 }

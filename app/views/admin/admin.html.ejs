@@ -1,7 +1,32 @@
 <% include ../layouts/head %>
 
 <div id="main">
-	<h1>Admin page</h1>
+	<h1>Admin</h1>
+
+	<h2>Admins:</h2>
+	<ul class="list">
+	<% admins.forEach(function(admin) { %>
+		<li id="admin-<%= admin.id %>" class="group">
+			<span class="info"><%= admin.username %></span>
+			<a href="#">X</a>
+		</li>
+	<% }); %>
+	</ul>
+
+	<hr />
+
+	<h2>Ideas:</h2>
+	<ul class="list">
+	<% ideas.forEach(function(idea) { %>
+		<li id="idea-<%= idea.id %>" class="group">
+			<span class="info group">
+				<span class="name"><%= idea.name %></span>
+				<span class="date"><%= idea.prettyDate() %></span>
+			</span>
+			<a href="#">X</a>
+		</li>
+	<% }); %>
+	</ul>
 </div>
 
 <% include ../layouts/foot %>

@@ -1,4 +1,5 @@
-var db = require ("../../lib/db.js");
+var db = require ("../../lib/db.js"),
+    dateformat = require('dateformat');
 
 var Idea = function(data) {
   this.id = -1;
@@ -46,6 +47,10 @@ var Idea = function(data) {
 
   this.isSaved = function() {
     return this.id != -1;
+  };
+
+  this.prettyDate = function() {
+    return dateformat(this.date, "h:MM mm/dd/yy");
   };
 };
 

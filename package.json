@@ -8,7 +8,8 @@
     "pg": "*",
     "db-migrate": "*",
     "mocha": "*",
-    "jake": "*"
+    "jake": "*",
+    "dateformat": "*"
   },
   "engines": {
     "node": "0.10.x",

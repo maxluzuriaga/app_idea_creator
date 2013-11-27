@@ -64,6 +64,10 @@ form {
 	margin: 20px 0;
 }
 
+/* ---------------------------------------------------------------------------------------
+   Index
+   --------------------------------------------------------------------------------------- */
+
 input[type=text] {
 	float: left;
 	background-color: #FCFFF5;
@@ -87,11 +91,9 @@ input[type=submit] {
 	float: right;
 	width: 16%;
 	border: 0;
-	/*border: 5px solid #91AA9D;*/
 	color: #D1DBBD;
 	background: #3E606F;
 	border-radius: 0 15px 15px 0;
-	/*padding: 10px;*/
 	height: 50px;
 	font-size: 12pt;
 	font-weight: bold;
@@ -101,6 +103,51 @@ input[type=submit] {
 	color: #3E606F;
 	text-align: center;
 	font-size: 14pt;
+}
+
+/* ---------------------------------------------------------------------------------------
+   Login
+   --------------------------------------------------------------------------------------- */
+
+#login_title {
+	margin-left: 20%;
+	font-weight: bold
+}
+
+#login label {
+	display: block;
+	float: left;
+	width: 18%;
+	color: #D1DBBD;
+	text-align: right;
+	font-size: 12pt;
+	margin-top: 12px;
+	font-style: italic;
+}
+
+#login p {
+	margin-bottom: 15px;
+}
+
+#login input[type=text], #login input[type=password] {
+	float: right;
+	width: 80%;
+	background-color: #FCFFF5;
+	height: 40px;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	border: 0;
+	border-radius: 10px;
+	padding: 0 2%;
+	font-size: 14pt;
+	color: #193441;
+}
+
+#login input[type=submit] {
+	width: 14%;
+	border-radius: 10px;
+	height: 40px;
 }
 
 /* ---------------------------------------------------------------------------------------

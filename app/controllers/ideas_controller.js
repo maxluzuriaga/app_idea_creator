@@ -2,13 +2,13 @@ var helper = require("../../lib/helper"),
     db = require("../../lib/db"),
     Idea = require("../models/idea");
 
-function index(response) {
+function index(response, request, postData) {
   Idea.count(function(c) {
     helper.render("index.html", { count: c }, response, 200);
   });
 }
 
-function submit(response, postData) {
+function submit(response, request, postData) {
   var r = function(e, c) {
     helper.render("submit.js", { error: e, count: c }, response, 200);
   };
@@ -28,7 +28,7 @@ function submit(response, postData) {
   }
 }
 
-function count(response) {
+function count(response, request, postData) {
   Idea.count(function(c) {
     helper.render("count.js", { count: c }, response, 200);
   });

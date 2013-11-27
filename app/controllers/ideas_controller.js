@@ -1,6 +1,6 @@
-var helper = require("../lib/helper"),
-    db = require("../lib/db"),
-    Idea = require("./models/idea");
+var helper = require("../../lib/helper"),
+    db = require("../../lib/db"),
+    Idea = require("../models/idea");
 
 function index(response) {
   Idea.count(function(c) {

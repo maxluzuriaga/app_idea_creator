@@ -1,13 +1,15 @@
 $(function() {
-	setInterval(function() {
-		$.ajax({
-			url: "/count",
-			type: "GET",
-			error: function(xhr, textStatus, error) {
-				console.log(error);
-			}			
-		});
-	}, 3000);
+	if ($("#ideas-count").length) {
+		setInterval(function() {
+			$.ajax({
+				url: "/count",
+				type: "GET",
+				error: function(xhr, textStatus, error) {
+					console.log(error);
+				}			
+			});
+		}, 3000);
+	}
 
 	$("#ideaform").submit(function(e) {
 		var formData = $(this).serializeArray(),

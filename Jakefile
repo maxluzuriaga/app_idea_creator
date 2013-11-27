@@ -1,4 +1,6 @@
-var db = require("./lib/db.js")
+var db = require("./lib/db.js"),
+    Admin = require("./app/models/admin");
+
 process.env.DATABASE_URL = process.env.DATABASE_URL || "postgres://postgres@localhost/app_idea_creator";
 
 namespace('db', function() {
@@ -18,6 +20,24 @@ namespace('db', function() {
   task('reset', {async: true}, function() {
     db.reset(function() {
       console.log("Database cleared");
+      complete();
+    });
+
+    jake.addListener('complete', function () {
+      process.exit();
+    });
+  });
+});
+
+namespace('admin', function() {
+  desc('Create a new admin');
+  task('create', {async: true}, function(username, password) {
+    var admin = new Admin();
+    admin.username = username;
+    admin.password = password;
+
+    admin.save(function() {
+      console.log("created user: " + username);
       complete();
     });
 

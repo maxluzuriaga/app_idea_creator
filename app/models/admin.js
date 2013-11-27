@@ -76,7 +76,6 @@ Admin.find = function(username, handler) {
     if(data.rows.length == 0) {
       admin = null;
     } else {
-      console.log(data.rows);
       admin = new Admin(data.rows[0]);
     }
     handler(admin);

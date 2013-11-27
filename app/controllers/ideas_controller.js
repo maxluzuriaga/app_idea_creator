@@ -4,13 +4,13 @@ var helper = require("../../lib/helper"),
 
 function index(response, request, postData) {
   Idea.count(function(c) {
-    helper.render("index.html", { count: c }, response, 200);
+    helper.render("ideas/index.html", { count: c }, response, 200);
   });
 }
 
 function submit(response, request, postData) {
   var r = function(e, c) {
-    helper.render("submit.js", { error: e, count: c }, response, 200);
+    helper.render("ideas/submit.js", { error: e, count: c }, response, 200);
   };
 
   if (/\S/.test(postData.idea)) {
@@ -30,7 +30,7 @@ function submit(response, request, postData) {
 
 function count(response, request, postData) {
   Idea.count(function(c) {
-    helper.render("count.js", { count: c }, response, 200);
+    helper.render("ideas/count.js", { count: c }, response, 200);
   });
 }
 

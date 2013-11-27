@@ -3,7 +3,7 @@ var helper = require("../../lib/helper"),
     Admin = require("../models/admin"),
     Idea = require("../models/idea");
 
-function admin(response, request, postData){
+function admin(response, request, params, postData) {
   helper.isSignedIn(request, function(signedIn) {
     if (signedIn) {
       Admin.getAll(function(admins) {
@@ -17,7 +17,7 @@ function admin(response, request, postData){
   });
 }
 
-function login(response, request, postData) {
+function login(response, request, params, postData) {
   helper.isSignedIn(request, function(signedIn) {
     if (signedIn) {
       helper.redirectTo("/admin", request, response);
@@ -27,7 +27,7 @@ function login(response, request, postData) {
   });
 }
 
-function createSession(response, request, postData) {
+function createSession(response, request, params, postData) {
   var username = postData.username;
   var password = postData.password;
 

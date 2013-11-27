@@ -23,7 +23,17 @@ function login(response, request, postData) {
 }
 
 function createSession(response, request, postData) {
-  
+  var username = postData.username;
+  var password = postData.password;
+
+  Admin.authenticate(username, password, function(authenticated) {
+    if (authenticated) {
+      helper.signIn(username, request);
+      helper.redirectTo("/admin", request, response);
+    } else {
+      helper.redirectTo("/login", request, response);
+    }
+  });
 }
 
 exports.admin = admin;

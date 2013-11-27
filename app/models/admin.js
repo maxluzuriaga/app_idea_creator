@@ -23,7 +23,7 @@ var Admin = function(data) {
     if (!this.isSaved()) {
       this.hashedPassword = this.hashedPassword || Admin.hashPassword(this.password);
 
-      db.perform_query('INSERT INTO admins(username, passsword) VALUES($1, $2) RETURNING id', [this.username, this.hashedPassword], function(data) {
+      db.perform_query('INSERT INTO admins(username, password) VALUES($1, $2) RETURNING id', [this.username, this.hashedPassword], function(data) {
         this.id = data.rows[0].id;
 
         callback();
@@ -76,6 +76,7 @@ Admin.find = function(username, handler) {
     if(data.rows.length == 0) {
       admin = null;
     } else {
+      console.log(data.rows);
       admin = new Admin(data.rows[0]);
     }
     handler(admin);
@@ -84,10 +85,10 @@ Admin.find = function(username, handler) {
 
 Admin.authenticate = function(username, password, handler) {
   Admin.find(username, function(admin) {
-    if(admin && (admin.password == Admin.hashPassword(password))) {
-      handler(admin);
+    if(admin && (admin.hashedPassword == Admin.hashPassword(password))) {
+      handler(true);
     } else {
-      handler(null);
+      handler(false);
     }
   });
 };

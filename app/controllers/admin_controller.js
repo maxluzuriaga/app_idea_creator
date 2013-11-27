@@ -1,11 +1,16 @@
 var helper = require("../../lib/helper"),
     db = require("../../lib/db"),
-    Admin = require("../models/admin");
+    Admin = require("../models/admin"),
+    Idea = require("../models/idea");
 
 function admin(response, request, postData){
   helper.isSignedIn(request, function(signedIn) {
     if (signedIn) {
-      helper.render("admin/admin.html", null, response, 200);
+      Admin.getAll(function(admins) {
+        Idea.getAll(function(ideas) {
+          helper.render("admin/admin.html", { admins: admins, ideas: ideas }, response, 200);
+        });
+      });
     } else {
       helper.redirectTo("/login", request, response);
     }

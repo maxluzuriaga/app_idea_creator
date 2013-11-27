@@ -22,7 +22,7 @@ var Admin = function(data) {
   this.save = function(callback) {
     if (!this.isSaved()) {
       this.hashedPassword = this.hashedPassword || Admin.hashPassword(this.password);
-      
+
       db.perform_query('INSERT INTO admins(username, passsword) VALUES($1, $2) RETURNING id', [this.username, this.hashedPassword], function(data) {
         this.id = data.rows[0].id;
 
@@ -85,9 +85,9 @@ Admin.find = function(username, handler) {
 Admin.authenticate = function(username, password, handler) {
   Admin.find(username, function(admin) {
     if(admin && (admin.password == Admin.hashPassword(password))) {
-      handler(true);
+      handler(admin);
     } else {
-      handler(false);
+      handler(null);
     }
   });
 };

@@ -102,6 +102,10 @@ input[type=submit] {
 	font-size: 12pt;
 	font-weight: bold;
 }
+input[type=submit]:hover {
+	color: #3E606F;
+	background: #D1DBBD;
+}
 
 #ideas-count {
 	color: #3E606F;
@@ -158,6 +162,22 @@ input[type=submit] {
    Admin
    --------------------------------------------------------------------------------------- */
 
+header h1 {
+	float: left;
+}
+
+header a {
+	float: right;
+	margin-top: 36px;
+	text-decoration: none;
+	color: #FF8A8A;
+	font-weight: bold;
+	font-size: 14pt
+}
+header a:hover {
+	opacity: 0.8;
+}
+
 .list li {
 	color: #FCFFF5;
 	margin: 10px 0;
@@ -196,6 +216,9 @@ input[type=submit] {
 	width: 40px;
 	padding: 8px 0;
 	text-align: center
+}
+.list a:hover {
+	color: #193441;
 }
 
 /* ---------------------------------------------------------------------------------------

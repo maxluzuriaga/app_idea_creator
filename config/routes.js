@@ -36,6 +36,11 @@ module.exports = {
     action: admin_controller.login,
     accept: ["GET"]
   },
+  "/logout": {
+    action: admin_controller.logout,
+    accept: ["GET"],
+    adminOnly: true
+  },
   "/create_session": {
     action: admin_controller.createSession,
     accept: ["POST"],

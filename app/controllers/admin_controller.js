@@ -27,6 +27,11 @@ function login(response, request, params, postData) {
   });
 }
 
+function logout(response, request, params, postData) {
+  helper.signOut(request);
+  helper.redirectTo("/", request, response);
+}
+
 function createSession(response, request, params, postData) {
   var username = postData.username;
   var password = postData.password;
@@ -57,5 +62,6 @@ function destroy(response, request, params, postData) {
 exports.admin = admin;
 exports.updateIdeas = updateIdeas;
 exports.login = login;
+exports.logout = logout;
 exports.createSession = createSession;
 exports.destroy = destroy;

@@ -26,6 +26,12 @@ module.exports = {
     accept: ["GET"],
     adminOnly: true
   },
+  "/update_ideas": {
+    action: admin_controller.updateIdeas,
+    accept: ["GET"],
+    ajaxOnly: true,
+    adminOnly: true
+  },
   "/login": {
     action: admin_controller.login,
     accept: ["GET"]

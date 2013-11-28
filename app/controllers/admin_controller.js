@@ -11,6 +11,12 @@ function admin(response, request, params, postData) {
   });
 }
 
+function updateIdeas(response, request, params, postData) {
+  Idea.getAll(function(ideas) {
+    helper.render("admin/update_ideas.js", { ideas: ideas }, response, 200);
+  });
+}
+
 function login(response, request, params, postData) {
   helper.isSignedIn(request, function(signedIn) {
     if (signedIn) {
@@ -49,6 +55,7 @@ function destroy(response, request, params, postData) {
 }
 
 exports.admin = admin;
+exports.updateIdeas = updateIdeas;
 exports.login = login;
 exports.createSession = createSession;
 exports.destroy = destroy;

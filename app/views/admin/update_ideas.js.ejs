@@ -1,0 +1,9 @@
+$("#ideas-list").html('<% ideas.forEach(function(idea) { %>\
+		<li id="idea-<%= idea.id %>" class="group">\
+			<span class="info group">\
+				<span class="name"><%= idea.name.replace(/'/g, "\\'") %></span>\
+				<span class="date"><%= idea.prettyDate() %></span>\
+			</span>\
+			<a href="/delete_idea?id=<%= idea.id %>" class="delete">X</a>\
+		</li>\
+	<% }) %>');

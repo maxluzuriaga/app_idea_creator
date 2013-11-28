@@ -36,7 +36,16 @@ function createSession(response, request, params, postData) {
 }
 
 function destroy(response, request, params, postData) {
-
+  Admin.findById(params.id, function(admin) {
+    if (admin) {
+      var id = admin.id;
+      admin.destroy(function() {
+        helper.render("admin/destroy.js", { id: id }, response, 200);
+      });
+    } else {
+      helper.render("admin/destroy.js", { id: null }, response, 200);
+    }
+  });
 }
 
 exports.admin = admin;

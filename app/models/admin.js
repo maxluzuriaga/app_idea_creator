@@ -82,6 +82,19 @@ Admin.find = function(username, handler) {
   });
 };
 
+Admin.findById = function(id, handler) {
+  db.perform_query('SELECT * FROM admins WHERE id = $1', [id], function(data) {
+    var admin;
+
+    if(data.rows.length == 0) {
+      admin = null;
+    } else {
+      admin = new Admin(data.rows[0]);
+    }
+    handler(admin);
+  });
+};
+
 Admin.authenticate = function(username, password, handler) {
   Admin.find(username, function(admin) {
     if(admin && (admin.hashedPassword == Admin.hashPassword(password))) {

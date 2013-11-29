@@ -10,7 +10,11 @@ function index(response, request, params, postData) {
 
 function submit(response, request, params, postData) {
   var r = function(e, c) {
-    helper.render("ideas/submit.js", { error: e, count: c }, response, 200);
+    if (params.isAjax) {
+      helper.render("ideas/submit.js", { error: e, count: c }, response, 200);
+    } else {
+      helper.redirectTo("/", request, response);
+    }
   };
 
   if (/\S/.test(postData.idea)) {
@@ -35,14 +39,22 @@ function count(response, request, params, postData) {
 }
 
 function destroy(response, request, params, postData) {
+  var r = function(eye_dee) {
+    if (params.isAjax) {
+      helper.render("ideas/destroy.js", { id: eye_dee }, response, 200);
+    } else {
+      helper.redirectTo("/admin", request, response);
+    }
+  }
+
   Idea.find(parseInt(params.id), function(idea) {
     if (idea) {
       var id = idea.id;
       idea.destroy(function() {
-        helper.render("ideas/destroy.js", { id: id }, response, 200);
+        r(id);
       });
     } else {
-      helper.render("ideas/destroy.js", { id: null }, response, 200);
+      r(null);
     }
   });
 }

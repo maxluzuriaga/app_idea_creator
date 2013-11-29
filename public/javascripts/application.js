@@ -48,13 +48,6 @@ $(function() {
 			url: formURL,
 			type: method,
 			data: formData,
-			success: function() {
-				$(".error input[type=text]").on('input', function() {
-					if(/\S/.test($(this).val()) || $(this).val() == "") {
-						$(this).parent().removeClass('error');
-					}
-				});
-			},
 			error: function(xhr, textStatus, error) {
 				console.log(error);
 			}

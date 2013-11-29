@@ -1,7 +1,18 @@
+var klass;
+
 <% if(error) { %>
-	$('form').addClass('error');
+	klass = 'error';
 <% } else { %>
+	klass = 'success';
 	$('form input[type=text]').val("");
 <% } %>
+
+$('form').addClass(klass);
+$('form input[type=text').animate({
+	backgroundColor: "#FCFFF5"
+}, 1000, function() {
+	$('form').removeClass(klass);
+	$(this).removeAttr('style');
+});
 
 <% include count.js.ejs %>

@@ -87,6 +87,9 @@ input[type=text] {
 	color: #193441;
 }
 
+.success input[type=text] {
+	background-color: #8dff8a;
+}
 .error input[type=text] {
 	background-color: #FF8A8A;
 }

@@ -10,7 +10,13 @@ var klass;
 	$("#ideas-count span").html(newCount);
 <% } %>
 
-$('form').addClass(klass);
+if ($('form.success, form.error').length) {
+	$('form input[type=text]').stop();
+	$('form input[type=text').removeAttr('style');
+}
+
+$('form').attr("class", "group " + klass);
+
 $('form input[type=text').animate({
 	backgroundColor: "#FCFFF5"
 }, 1000, function() {

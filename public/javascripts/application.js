@@ -11,6 +11,29 @@ function listenForDelete() {
 	});
 }
 
+function updateCount(upto) {
+	var current = parseInt($("#ideas-count span").html());
+	count(current, upto);
+}
+
+function count(current, upto) {
+	if(current != upto) {
+		var diff = (upto > current) ? 1 : -1;
+		var delta = Math.abs(upto - current)
+		var speed = Math.floor(3000/Math.pow(delta, 2));
+
+		if (speed == 0) {
+			current += Math.floor(diff * (delta / 1000) * 5);
+		}
+
+		$("#ideas-count span").html(current + diff);
+
+		setTimeout(function(){
+			count(current + diff, upto);
+		}, speed);
+	}
+}
+
 $(function() {
 	if ($("#ideas-count").length) {
 		setInterval(function() {
@@ -21,7 +44,7 @@ $(function() {
 					console.log(error);
 				}			
 			});
-		}, 3000);
+		}, 2000);
 	}
 
 	if ($("#ideas-list").length) {
